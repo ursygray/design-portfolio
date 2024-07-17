@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designs by Ursula Gray</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="2024_style.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- -------------- Navigation Bar -------------- -->
+
+        <header>
+            <div class="container d-flex justify-content-between align-items-center">
+            <div class="logo">
+                <a href="home.html">
+                    <img src="logo.svg" alt="Logo">
+                </a>
+            </div>
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html">Work</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        </header>
+
+<!-- -------------- Main Body Content -------------- -->
+
+        <main>
+            <div class="container">
+                <!-- Hidden elements containing card data -->
+                <div id="card-data" style="display: none;">
+                    <div class="card-item" data-img="Images/Nursing_E-Book_2024.png" data-link="project_01.html"></div>
+                    <div class="card-item" data-img="Images/Big_Text_Ads_2024.png" data-link="#"></div>
+                    <div class="card-item" data-img="Images/Notion_Covers.png" data-link="#"></div>
+                    <div class="card-item" data-img="Images/Sizzle_Reels.png" data-link="#"></div>
+                    <div class="card-item" data-img="Images/Social_2023_Cover.png" data-link="#"></div>
+                    <div class="card-item" data-img="Images/Employee_Spotlight.png" data-link="#"></div>
+                    <div class="card-item" data-img="Images/FY23_stevie_interview_12x.png" data-link="#"></div>
+                    <div class="card-item" data-img="Images/Google_Ads_2022.png" data-link="#"></div>
+                    <div class="card-item" data-img="Images/moonlight_example_cover_2.jpg" data-link="#"></div>
+                    <div class="card-item" data-img="Images/14.png" data-link="#"></div>
+                    <div class="card-item" data-img="Images/16.png" data-link="#"></div>
+                    <div class="card-item" data-img="Images/17.png" data-link="#"></div>
+                    <div class="card-item" data-img="Images/Blogs_Cover.png" data-link="#"></div>
+                    <div class="card-item" data-img="Images/CandExp_E-Book_Cover_2.png" data-link="#"></div>
+                    <div class="card-item" data-img="Images/Plum_Scholarship_Promotional_Resources_Social_1080x1080.png" data-link="#"></div>
+                    <div class="card-item" data-img="Images/Talent_Resilience_E-Book_Cover_2.png" data-link="#">
+                    </div>
+                </div>
+
+                <div id="card-container" class="row"></div>
+                <nav>
+                    <ul class="pagination justify-content-center" id="pagination-controls"></ul>
+                </nav>
+            </div>
+        </main>
+
+<!-- -------------- Footer -------------- -->
+
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <p>&copy; 2024 Ursula Gray</p>
+                    </div>
+                    <div class="col-md-8">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+<!-- -------------- Bootstrap Script -------------- -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- -------------- Card Grid Script -------------- -->
+
+    <script>
+        $(document).ready(function() {
+            const cardsPerPage = 24;
+
+            // Read card data from hidden elements
+            const cardData = [];
+            $('#card-data .card-item').each(function() {
+                cardData.push({
+                    img: $(this).data('img'),
+                    link: $(this).data('link')
+                });
+            });
+
+            const totalCards = cardData.length;
+            const totalPages = Math.ceil(totalCards / cardsPerPage);
+
+            // Create and display pagination controls
+            function createPaginationControls(totalPages) {
+                let controls = '';
+                for (let i = 1; i <= totalPages; i++) {
+                    controls += `
+                        <li class="page-item"><a class="page-link" href="#" data-page="${i}">${i}</a></li>
+                    `;
+                }
+                document.getElementById('pagination-controls').innerHTML = controls;
+            }
+
+            // Function to create card HTML
+            function createCard(card) {
+                return `
+                    <div class="col-md-6 mb-4">
+                        <div class="card">
+                            <a href="${card.link}">
+                                <img src="${card.img}" class="card-img-top" alt="Card image">
+                            </a>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Function to display cards based on the current page
+            function displayCards(page) {
+                const start = (page - 1) * cardsPerPage;
+                const end = start + cardsPerPage;
+                $('#card-container').empty();
+
+                for (let i = start; i < end && i < totalCards; i++) {
+                    $('#card-container').append(createCard(cardData[i]));
+                }
+            }
+
+            // Initial display of the first page
+            displayCards(1);
+            createPaginationControls(totalPages);
+
+            // Event listener for pagination controls
+            $('#pagination-controls').on('click', 'a', function(e) {
+                e.preventDefault();
+                const page = $(this).data('page');
+                displayCards(page);
+                $('.page-item').removeClass('active');
+                $(this).parent().addClass('active');
+            });
+
+            // Set the first page link as active
+            $('#pagination-controls li:first-child').addClass('active');
+        });
+    </script>
+
+</body>
+</html>

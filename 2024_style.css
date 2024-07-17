@@ -1,0 +1,144 @@
+/* styles.css */
+
+/* ------------------ Basic Reset ------------------ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ------------------ Body Style ------------------- */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400; /* Normal weight */
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.font-bold {
+    font-weight: 700; /* Bold weight */
+}
+
+.container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 1%;
+}
+
+/* --------------------- Header -------------------- */
+header {
+    color: #fff;
+    text-align: center;
+    background-color: #333;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    font-weight: 700; /* Bold weight */
+}
+
+/* ------------------ Navigation ------------------- */
+nav {
+    color: #fff;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0;
+    font-size: 1.1em;
+    font-weight: 400; /* Normal weight */
+}
+
+nav a:visited {
+    color: #fff;
+}
+
+nav a:hover {
+    color: #999;
+}
+
+.logo {
+    width:48px;
+}
+
+.pagination a:visited {
+    color: #333;
+}
+
+/* ------------------ Main Content ----------------- */
+main {
+    margin-top: 60px;
+    margin-right: auto;
+    margin-bottom: 10px;
+    margin-left: auto;
+    max-width: 1080px;
+    flex: 1;
+}
+
+.card {
+    border-radius: 0.75rem !important;
+}
+
+.card-img-top {
+    border-radius: 0.75rem !important;
+}
+
+.filler {
+    background-color: #999;
+    width: 600px;
+    height: 300px;
+}
+
+/* --------------------- Footer -------------------- */
+footer {
+    min-height: 232px;
+    padding: 32px 0;
+    margin-top: 32px;
+    background-color: #333;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #fff;
+}
+
+/* ---------------- Utility Classes ---------------- */
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.mt-1 {
+    margin-top: 10px;
+}
+
+.mt-2 {
+    margin-top: 20px;
+}
+
+.mb-1 {
+    margin-bottom: 10px;
+}
+
+.mb-2 {
+    margin-bottom: 20px;
+}
